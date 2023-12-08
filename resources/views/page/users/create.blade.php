@@ -1,9 +1,7 @@
 <x-template>
-    <x-card judul="Data Pengguna">
-        <x-slot name='tombol'>
-    
-        </x-slot>
+    <x-card judul="Tambah Pengguna">
         <form action="{{ url('user') }}" method="post">
+            @csrf
             <x-input nama='username' tipe='text'>
                 <x-slot name='error'>
                 @error('username') <small class="text-danger">{{ $message }}</small> @enderror
@@ -18,7 +16,7 @@
                 <option value="admin">Admin</option>
                 <option value="staff">staff</option>
             </x-select>
-            <x-button nama='tambah' tipe='submit' posisi='end' />
+            <x-button nama="tambah" tipe="submit" posisi="end" />
         </form>
     </x-card>
 </x-template>

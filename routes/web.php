@@ -21,6 +21,8 @@ Route::get('/dashboard', function () {
     return view('page.dashboard');
 });
 
-Route::controller(UserController::class)->group(function(){
-    Route::get('user/create', 'create');
-});
+Route::resource('/user', UserController::class);
+
+// Route::controller(UserController::class)->group(function(){
+//     Route::get('user/create', 'create');
+// });

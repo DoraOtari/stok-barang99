@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -13,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return view('page.users.index');
     }
 
     /**
@@ -34,7 +36,13 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        User::create([
+            'username' => $request->username,
+            'password' => Hash::make($request->password),
+            'role'     => $request->role,
+        ]);
+
+        return view('page.users.index')->with('pesan', "Berhasil tambah user $request->username");
     }
 
     /**
