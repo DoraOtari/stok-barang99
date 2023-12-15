@@ -15,7 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('page.users.index');
+        // dd(User::all());
+        return view('page.users.index',['user' => User::all()]);
     }
 
     /**
@@ -42,7 +43,7 @@ class UserController extends Controller
             'role'     => $request->role,
         ]);
 
-        return view('page.users.index')->with('pesan', "Berhasil tambah user $request->username");
+        return redirect('/user')->with('pesan', "Berhasil tambah user $request->username");
     }
 
     /**
@@ -87,6 +88,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::destroy($id);
+        return redirect('/user')->with('pesan', "Berhasil hapus data");
     }
 }

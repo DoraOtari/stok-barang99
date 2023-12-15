@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +24,8 @@ Route::get('/dashboard', function () {
 
 Route::resource('/user', UserController::class);
 
-// Route::controller(UserController::class)->group(function(){
-//     Route::get('user/create', 'create');
-// });
+Route::controller(ProdukController::class)->group(function(){
+    Route::get('/produk', 'index');
+    Route::get('/produk/masuk', 'masuk');
+    Route::post('/produk', 'store');
+});
