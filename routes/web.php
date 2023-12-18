@@ -28,4 +28,7 @@ Route::controller(ProdukController::class)->group(function(){
     Route::get('/produk', 'index');
     Route::get('/produk/masuk', 'masuk');
     Route::post('/produk', 'store');
+    Route::get('/transaksi', 'keluar');
+    Route::post('/produk/cari', 'cari');
+    Route::post('/transaksi', 'jual');
 });

@@ -46,14 +46,14 @@
           </li>
           <li class="nav-item">
             <a class="nav-link {{ Request::is('produk') ? 'active' : '' }}" href="{{ url('/produk') }}">
-              <span data-feather="shopping-cart" class="align-text-bottom"></span>
+              <span data-feather="box" class="align-text-bottom"></span>
               Products
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="users" class="align-text-bottom"></span>
-              Customers
+            <a class="nav-link {{ Request::is('transaksi') ? 'active' : '' }}" href="{{ url('/transaksi') }}">
+              <span data-feather="shopping-cart" class="align-text-bottom"></span>
+              Transaksi
             </a>
           </li>
           <li class="nav-item">

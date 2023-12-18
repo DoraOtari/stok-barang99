@@ -29,19 +29,25 @@ class ProdukController extends Controller
         return redirect()->back()->with('pesan', 'berhasil tambah produk');
     }
 
-    public function show(Produk $produk)
+    public function keluar()
     {
-        //
+        return view('page.produk.keluar', ['produk' => Produk::all()]);
     }
 
-    public function edit(Produk $produk)
+    public function cari(Request $req)
     {
-        //
+        $produkCari = Produk::find($req->produk_id);
+        return view('page.produk.keluar',[
+            'produk'     => Produk::all(),
+            'produkCari' => $produkCari
+        ]);
     }
 
-    public function update(Request $request, Produk $produk)
+    public function jual(Request $req)
     {
-        //
+        $produk = Produk::find($req->produkCari_id);
+        $produk->decrement('qty', $req->qty_jual);
+        return redirect('/produk')->with('pesan',"Berhasil mengungari stok sebesar $req->qty_jual");
     }
 
     /**
